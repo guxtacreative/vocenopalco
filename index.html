@@ -61,11 +61,81 @@ h2{font-size:66px;line-height:.92;font-weight:700;margin-top:24px;letter-spacing
 .cta .row{display:flex;justify-content:space-between;align-items:flex-start}
 .cta h2{color:#05140e;font-size:72px;line-height:.8;max-width:none;font-weight:700;letter-spacing:-0.045em;margin-top:0}
 .btn-dark{display:inline-flex;align-items:center;gap:14px;height:46px;width:174px;justify-content:center;background:#0b0b0b;color:#fff;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;margin-top:154px;white-space:nowrap}
+
+/* ===== RESPONSIVO ===== */
+img{max-width:100%}
+@media (max-width:1100px){
+  .wrap,.infobar{width:88%}
+  h1{font-size:68px}
+  h2{font-size:52px}
+  .split{flex-direction:column;align-items:flex-start;gap:22px}
+  .split .right{width:auto;max-width:560px}
+  .cards{gap:24px}
+  .card{width:auto;flex:1 1 0}
+  .info{padding:0 22px}
+  .info .v{font-size:16px}
+  .detalhes{height:auto;min-height:547px}
+  .detalhes .txt{padding:64px 6% 64px}
+  .detalhes h2{font-size:48px}
+  .cta h2{font-size:56px;line-height:.9}
+}
+@media (max-width:760px){
+  .hero{height:auto;background-position:70% center}
+  .hero:before{background:linear-gradient(180deg,rgba(5,9,8,.72) 0%,rgba(5,9,8,.88) 50%,rgba(5,9,8,.97) 100%)}
+  .hero .wrap{padding-top:84px;padding-bottom:48px}
+  .eyebrow{font-size:11px;letter-spacing:2.5px;gap:10px}
+  .eyebrow:before{width:24px;flex-basis:24px}
+  h1{font-size:46px;margin-top:20px}
+  .lead{font-size:16px;margin-top:20px}
+  .btns{flex-direction:column;align-items:stretch;gap:20px;margin-top:32px}
+  .btn{justify-content:center;height:52px}
+  .link{margin-left:0;justify-content:center}
+  .infobar{position:relative;left:auto;top:40px;transform:none;margin:0 auto;height:auto;flex-direction:column;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .info{padding:18px 20px;border-right:none;border-bottom:1px solid #e3e3e3}
+  .info:last-child{border-bottom:none}
+  .info .v{font-size:16px;margin-top:5px;word-break:break-word}
+  .jornada{padding:112px 0 72px}
+  h2{font-size:38px;margin-top:18px}
+  h2 br{display:none}
+  .split .right{font-size:15px}
+  .cards{flex-direction:column;gap:16px;margin-top:32px}
+  .card{width:100%;flex:none;height:auto;min-height:250px;padding:28px 24px 28px}
+  .card .num{font-size:110px;right:16px;top:12px}
+  .card h3{font-size:24px;margin-top:30px}
+  .card p{font-size:14px}
+  .dl{margin-top:22px}
+  .detalhes{flex-direction:column;min-height:0}
+  .detalhes .img{flex:none;height:260px}
+  .detalhes .txt{padding:48px 6% 56px}
+  .detalhes h2{font-size:36px}
+  .checks{margin-top:26px}
+  .checks li{height:auto;padding:14px 0;align-items:flex-start;font-size:14px;line-height:1.5}
+  .checks i{margin-top:1px}
+  .cta{min-height:0;padding:64px 0 72px}
+  .cta .row{flex-direction:column;align-items:stretch;gap:32px}
+  .cta h2{max-width:100%;overflow-wrap:break-word}
+  .cta h2{font-size:40px;line-height:.98}
+  .btn-dark{margin-top:0;width:100%;height:52px}
+}
+@media (max-width:380px){
+  h1{font-size:40px}
+  h2,.detalhes h2{font-size:32px}
+  .cta h2{font-size:34px}
+}
+
+.card>*:not(.num){position:relative;z-index:1}
+@media (max-width:1100px) and (min-width:761px){
+  .info{padding:0 18px;gap:12px}
+  .info svg{display:none}
+  .info .v{font-size:15px}
+  .cta .row{align-items:center;gap:32px}
+  .btn-dark{margin-top:0;flex:0 0 auto}
+}
 </style></head><body>
 
 <section class="hero"><div class="wrap">
   <div class="eyebrow">Disrupção 2027 · Gramado</div>
-  <h1>Você no<br>Palco do<br><span class="green">Disrupção.</span></h1>
+  <h1>Você no <br>Palco do <br><span class="green">Disrupção.</span></h1>
   <p class="lead">O I Concurso de Artigos Científicos IGPREV vai levar conhecimento, inovação e novos talentos ao palco do maior encontro previdenciário do Sul do Brasil.</p>
   <div class="btns">
     <a class="btn" href="arquivos/edital-concurso-igprev.pdf" download>Baixar edital <span>&#8595;</span></a>
@@ -81,7 +151,7 @@ h2{font-size:66px;line-height:.92;font-weight:700;margin-top:24px;letter-spacing
 
 <section class="jornada" id="jornada"><div class="wrap">
   <div class="split">
-    <div><div class="eyebrow grey">Comece sua jornada</div><h2>Tudo pronto para<br>você participar.</h2></div>
+    <div><div class="eyebrow grey">Comece sua jornada</div><h2>Tudo pronto para <br>você participar.</h2></div>
     <p class="right">Consulte as regras, prepare o seu artigo e envie a documentação dentro do prazo. Reunimos abaixo os arquivos oficiais necessários para a sua inscrição.</p>
   </div>
   <div class="cards">
@@ -106,7 +176,7 @@ h2{font-size:66px;line-height:.92;font-weight:700;margin-top:24px;letter-spacing
   <div class="img" role="img" aria-label="2ª Edição Disrupção"></div>
   <div class="txt">
     <div class="eyebrow dark">Atenção aos detalhes</div>
-    <h2>Prepare uma<br>inscrição impecável.</h2>
+    <h2>Prepare uma <br>inscrição impecável.</h2>
     <ul class="checks">
       <li><i>&#10003;</i><span>O artigo deve ser enviado em <b>formato PDF e sem identificação de autoria</b>.</span></li>
       <li><i>&#10003;</i><span>O formulário deve ser preenchido, assinado e enviado em <b>arquivo separado</b>.</span></li>
@@ -117,7 +187,7 @@ h2{font-size:66px;line-height:.92;font-weight:700;margin-top:24px;letter-spacing
 </section>
 
 <section class="cta"><div class="wrap"><div class="row">
-  <h2>Ideias que transformam<br>merecem chegar ao<br>palco.</h2>
+  <h2>Ideias que transformam <br>merecem chegar ao <br>palco.</h2>
   <a class="btn-dark" href="mailto:instituto.igprev@gmail.com?subject=Submiss%C3%A3o%20-%20Concurso%20de%20Artigos%20IGPREV">Fazer inscrição &rarr;</a>
 </div></div></section>
 </body></html>
