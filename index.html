@@ -131,6 +131,47 @@ img{max-width:100%}
   .cta .row{align-items:center;gap:32px}
   .btn-dark{margin-top:0;flex:0 0 auto}
 }
+
+/* ===== AJUSTE JORNADA (desktop) ===== */
+.jornada{background:radial-gradient(ellipse 70% 60% at 85% 0%,#0c1c16 0%,rgba(7,13,11,0) 70%),#070d0b}
+.jornada h2{font-weight:600;letter-spacing:-0.035em;line-height:.98}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:center}
+.split .right{width:auto;max-width:470px;margin:28px 0 0;padding-left:6%;font-size:15px;line-height:1.65}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:56px}
+.card{width:auto;height:auto;min-height:300px;padding:36px 36px 34px;background:linear-gradient(180deg,#0d1613 0%,#0a1210 100%);border-color:#18241f}
+.card .num{font-size:120px;font-weight:700;color:#141f1a;right:28px;top:26px}
+.card h3{font-size:28px;font-weight:500;margin-top:40px}
+.card p{font-size:14px;color:#8d9792;max-width:440px}
+.dl{display:inline-flex;align-items:center;gap:10px;padding-top:28px;font-size:11px}
+@media (max-width:1100px){
+  .split{display:flex}
+  .split .right{padding-left:0;margin-top:0}
+}
+@media (max-width:760px){
+  .cards{display:flex}
+  .card{min-height:250px}
+  .card .num{font-size:100px}
+  .card h3{font-size:24px;margin-top:30px}
+  .dl{padding-top:20px}
+}
+
+/* ===== ANIMACOES DE ROLAGEM ===== */
+.js .rv{opacity:0;translate:0 32px;transition:opacity .9s cubic-bezier(.2,.7,.2,1),translate .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js .rv.in{opacity:1;translate:none}
+.js .rv-left{translate:-40px 0}
+.js .rv-num{translate:60px 0;transition-duration:1.4s}
+.js .rv-wipe{opacity:1;translate:none;clip-path:inset(0 100% 0 0);transition:clip-path 1.4s cubic-bezier(.7,0,.2,1)}
+.js .rv-wipe.in{clip-path:inset(0 0 0 0)}
+.js .rv-line:before{transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.2,.7,.2,1) calc(var(--d,0s) + .2s)}
+.js .rv-line.in:before{transform:none}
+.card{transition:border-color .4s,translate .4s}
+.card:hover{border-color:#00d68f55}
+.btn,.btn-dark{transition:filter .3s,translate .3s}
+.btn:hover,.btn-dark:hover{filter:brightness(1.1);translate:0 -2px}
+@media (prefers-reduced-motion:reduce){
+  .js .rv,.js .rv-wipe{opacity:1!important;translate:none!important;clip-path:none!important;transition:none!important}
+  .js .rv-line:before{transform:none!important}
+}
 </style></head><body>
 
 <section class="hero"><div class="wrap">
@@ -190,4 +231,45 @@ img{max-width:100%}
   <h2>Ideias que transformam <br>merecem chegar ao <br>palco.</h2>
   <a class="btn-dark" href="mailto:instituto.igprev@gmail.com?subject=Submiss%C3%A3o%20-%20Concurso%20de%20Artigos%20IGPREV">Fazer inscrição &rarr;</a>
 </div></div></section>
+<script>
+(function(){
+  var d=document,root=d.documentElement;root.classList.add('js');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function mark(sel,step,start,extra){
+    d.querySelectorAll(sel).forEach(function(el,i){
+      el.classList.add('rv');if(extra)extra.split(' ').forEach(function(c){el.classList.add(c)});
+      el.style.setProperty('--d',((start||0)+i*(step||0))+'s');
+    });
+  }
+  mark('.hero .eyebrow',0,.1,'rv-line');
+  mark('.hero h1',0,.25);
+  mark('.hero .lead',0,.45);
+  mark('.hero .btns',0,.6);
+  mark('.infobar',0,.8);
+  mark('.jornada .eyebrow',0,0,'rv-line');
+  mark('.jornada h2',0,.1);
+  mark('.split .right',0,.25);
+  mark('.cards .card',.15,.1);
+  mark('.card .num',.15,.4,'rv-num');
+  mark('.detalhes .img',0,0,'rv-wipe');
+  mark('.detalhes .eyebrow',0,.3,'rv-line');
+  mark('.detalhes h2',0,.4);
+  mark('.checks li',.1,.55,'rv-left');
+  mark('.cta h2',0,0);
+  mark('.btn-dark',0,.25);
+  var els=d.querySelectorAll('.rv');
+  if(reduce||!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){(e.target._rv||e.target).classList.add('in');io.unobserve(e.target);}})},{rootMargin:'0px 0px -10% 0px',threshold:.12});
+  els.forEach(function(e){if(e.classList.contains('rv-wipe')){e.parentNode._rv=e;io.observe(e.parentNode);}else io.observe(e)});
+  var hero=d.querySelector('.hero'),ticking=false;
+  window.addEventListener('scroll',function(){
+    if(ticking)return;ticking=true;
+    requestAnimationFrame(function(){
+      var y=window.scrollY;
+      if(window.innerWidth>760&&y<1000)hero.style.backgroundPosition='75% calc(35% + '+(y*.3)+'px)';
+      ticking=false;
+    });
+  },{passive:true});
+})();
+</script>
 </body></html>
